@@ -15,7 +15,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   private TalonFX elevatorMotor = new TalonFX(Constants.ELEVATOR_MOTOR_ID);
   public ElevatorSubsystem() {
-    new PIDSetter(0, 0, 0, 0, elevatorMotor);
+    new PIDSetter(0.25, 0, 1, 1, elevatorMotor);
   }
 
   public void runMotor() {
