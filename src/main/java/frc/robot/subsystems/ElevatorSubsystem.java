@@ -22,6 +22,9 @@ public class ElevatorSubsystem extends SubsystemBase {
     elevatorMotor.set(ControlMode.PercentOutput, Constants.ELEVATOR_MOTOR_SPEED);
   }
 
+  public double getElevatorEncoderValue() {
+    return elevatorMotor.getSelectedSensorPosition();
+  }
 public void stopMotor() {
   elevatorMotor.set(ControlMode.PercentOutput, 0);
 }
