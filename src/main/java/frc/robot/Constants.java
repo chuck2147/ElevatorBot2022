@@ -13,8 +13,6 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public final static int ELEVATOR_MOTOR_ID = 13;
-    public final static double ELEVATOR_MOTOR_SPEED = 0.5;
 
     public static final double DRIVETRAIN_TRACKWIDTH_METERS = 0.43;
     /**
@@ -48,4 +46,18 @@ public final class Constants {
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 11;
     public static final int BACK_RIGHT_MODULE_STEER_ENCODER = 12;
     public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(7377389);
+
+    public final static int ELEVATOR_MOTOR_ID = 14;
+    public final static double ELEVATOR_MOTOR_SPEED = 0.5;
+
+    public final static int LEFT_INTAKE_MOTOR = 15;
+    public final static int RIGHT_INTAKE_MOTOR = 16;
+    public final static int ROTATE_INTAKE_MOTOR = 17;
+
+    public final static int RIGHT_PISTON_FORWARD_CHANNEL = 0;
+    public final static int RIGHT_PISTON_REVERSE_CHANNEL = 1;
+
+    
+    public final static int LEFT_PISTON_FORWARD_CHANNEL = 2;
+    public final static int LEFT_PISTON_REVERSE_CHANNEL = 3;
 }
