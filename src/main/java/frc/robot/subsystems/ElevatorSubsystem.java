@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.PIDSetter;
@@ -14,6 +16,10 @@ import frc.robot.PIDSetter;
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   private TalonFX elevatorMotor = new TalonFX(Constants.ELEVATOR_MOTOR_ID);
+
+  private DoubleSolenoid elevatorBrake = new DoubleSolenoid (PneumaticsModuleType.REVPH,
+   Constants.ELEVATOR_BRAKE_FORWARD_CHANNEL, Constants.ELEVATOR_BRAKE_REVERSE_CHANNEL);
+
   public ElevatorSubsystem() {
     new PIDSetter(0.25, 0, 1, 1, elevatorMotor);
   }

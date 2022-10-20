@@ -49,15 +49,19 @@ public final class Constants {
 
     public final static int ELEVATOR_MOTOR_ID = 14;
     public final static double ELEVATOR_MOTOR_SPEED = 0.5;
+    public final static int ELEVATOR_BRAKE_FORWARD_CHANNEL = 4;
+    public final static int ELEVATOR_BRAKE_REVERSE_CHANNEL = 5;
 
     public final static int LEFT_INTAKE_MOTOR = 15;
     public final static int RIGHT_INTAKE_MOTOR = 16;
     public final static int ROTATE_INTAKE_MOTOR = 17;
 
+    public final static int INTAKE_ROTATE_BRAKE_FORWARD_CHANNEL = 6;
+    public final static int INTAKE_ROTATE_BRAKE_REVERSE_CHANNEL = 7;
+
     public final static int RIGHT_PISTON_FORWARD_CHANNEL = 0;
     public final static int RIGHT_PISTON_REVERSE_CHANNEL = 1;
 
-    
     public final static int LEFT_PISTON_FORWARD_CHANNEL = 2;
     public final static int LEFT_PISTON_REVERSE_CHANNEL = 3;
 }
