@@ -8,8 +8,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ElevatorButtonCommand;
+import frc.robot.commands.ElevatorGoToBottomCommand;
+import frc.robot.commands.ElevatorGoToMiddleCommand;
+import frc.robot.commands.ElevatorGoToTopCommand;
 import frc.robot.commands.ElevatorButtonCommand;
 import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -23,7 +27,11 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Joystick controller = new Joystick(0);
   private final JoystickButton elevatorButton = new JoystickButton(controller, 1);
+  private final JoystickButton elevatorBottomButton = new JoystickButton(controller, 2);
+  private final JoystickButton elevatorMiddleButton = new JoystickButton(controller, 3);
+  private final JoystickButton elevatorTopButton = new JoystickButton(controller, 4);
   private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
   private final ElevatorButtonCommand elevatorCommand = new ElevatorButtonCommand(elevatorSubsystem);
   private final ElevatorButtonCommand m_autoCommand = new ElevatorButtonCommand(elevatorSubsystem);
@@ -43,6 +51,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     elevatorButton.whileHeld(elevatorCommand);
     elevatorButton.whenReleased(elevatorSubsystem::stopMotor);//hi
+    elevatorBottomButton.whenPressed(new ElevatorGoToBottomCommand(elevatorSubsystem, Constants.ELEVATOR_BOTTOM_ENCODER_VALUE));
+    elevatorMiddleButton.whenPressed(new ElevatorGoToMiddleCommand(elevatorSubsystem, Constants.ELEVATOR_MIDDLE_ENCODER_VALUE));
+    elevatorTopButton.whenPressed(new ElevatorGoToTopCommand(elevatorSubsystem, Constants.ELEVATOR_TOP_ENCODER_VALUE));
   }
 
   /**

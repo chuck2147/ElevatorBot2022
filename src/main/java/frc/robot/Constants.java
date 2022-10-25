@@ -47,8 +47,12 @@ public final class Constants {
     public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(0);
 
     public final static int ELEVATOR_MOTOR_ID = 14;
+    public final static int ELEVATOR_BREAK_FORWARD = 4;
+    public final static int ELEVATOR_BREAK_BACKWARD = 5;
     public final static double ELEVATOR_MOTOR_SPEED = 0.5;
+    public final static double ELEVATOR_BOTTOM_ENCODER_VALUE = 0;
     public final static double ELEVATOR_MIDDLE_ENCODER_VALUE = 1000;
+    public final static double ELEVATOR_TOP_ENCODER_VALUE = 5000;
 
     public final static int VERTICAL_INTAKE_MOTOR_ID = 15;
     public final static int LEFT_INTAKE_MOTOR_ID = 16;

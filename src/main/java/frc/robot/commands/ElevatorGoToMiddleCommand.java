@@ -6,18 +6,25 @@ import frc.robot.subsystems.ElevatorSubsystem;
 
 public class ElevatorGoToMiddleCommand extends CommandBase {
     private final ElevatorSubsystem elevatorSubsystem;
-    private final double encoderValue;
+    private final double encoderValueMiddle;
     public ElevatorGoToMiddleCommand(ElevatorSubsystem elevatorSubsystem, double encoderValue) {
         this.elevatorSubsystem = elevatorSubsystem;
-        this.encoderValue = encoderValue;
+        this.encoderValueMiddle = encoderValue;
         addRequirements(elevatorSubsystem);
     }
 
     @Override
     public void execute() {
-        while (encoderValue < elevatorSubsystem.getElevatorEncoderValue()) {
-            elevatorSubsystem.runMotor();
+        while (true) {
+            if(encoderValueMiddle - 50 > elevatorSubsystem.getElevatorEncoderValue()) {
+                if (encoderValueMiddle - 50 > elevatorSubsystem.getElevatorEncoderValue()) {
+                elevatorSubsystem.runMotor(); 
+                }
+            } else if (encoderValueMiddle + 50 < elevatorSubsystem.getElevatorEncoderValue()) {
+                if (encoderValueMiddle - 50 < elevatorSubsystem.getElevatorEncoderValue()) {
+                    elevatorSubsystem.reverseMotor();
+                }
+            } else elevatorSubsystem.stopMotor();
         } 
-        elevatorSubsystem.stopMotor();
     }
 }
