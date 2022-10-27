@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ElevatorButtonCommand;
 import frc.robot.commands.ElevatorButtonCommand;
 import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -24,6 +25,14 @@ public class RobotContainer {
   private final Joystick controller = new Joystick(0);
   private final JoystickButton elevatorButton = new JoystickButton(controller, 1);
   private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  
+  private final JoystickButton pistonOpenButton = new JoystickButton(controller, 2);
+  private final JoystickButton pistonCloseButton = new JoystickButton(controller, 3);
+
+  private final JoystickButton intakeForwardButton = new JoystickButton(controller, 4);
+  private final JoystickButton intakeReverseButton = new JoystickButton(controller, 5);
+
 
   private final ElevatorButtonCommand elevatorCommand = new ElevatorButtonCommand(elevatorSubsystem);
   private final ElevatorButtonCommand m_autoCommand = new ElevatorButtonCommand(elevatorSubsystem);
@@ -43,6 +52,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
     elevatorButton.whileHeld(elevatorCommand);
     elevatorButton.whenReleased(elevatorSubsystem::stopMotor);//hi
+    intakeForwardButton.whileHeld(intakeSubsystem::intakeForward);
+    intakeReverseButton.whileHeld(intakeSubsystem::intakeReverse);
+    pistonOpenButton.whenPressed(intakeSubsystem::intakeForwardPiston);
+    pistonCloseButton.whenPressed(intakeSubsystem::intakeReversePiston);
   }
 
   /**

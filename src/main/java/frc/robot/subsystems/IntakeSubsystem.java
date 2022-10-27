@@ -41,12 +41,12 @@ public void intakeReversePiston() {
     leftPiston.set(Value.kReverse);
 }
 
-public void intakeMotorForward(){
+public void intakeForward(){
 
     rightIntakeMotor.set(ControlMode.PercentOutput, .5);
     leftIntakeMotor.set(ControlMode.PercentOutput, .5);
 }
-public void intakeMotorReverse(){
+public void intakeReverse(){
 
     rightIntakeMotor.set(ControlMode.PercentOutput, -.5);
     leftIntakeMotor.set(ControlMode.PercentOutput, -.5);
