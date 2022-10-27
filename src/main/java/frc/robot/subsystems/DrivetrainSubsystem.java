@@ -151,6 +151,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
    * Sets the gyroscope angle to zero. This can be used to set the direction the robot is currently facing to the
    * 'forwards' direction.
    */
+  
   public void zeroGyroscope() {
     m_pigeon.setFusedHeading(0.0);
   }

@@ -57,8 +57,8 @@ public final class Constants {
     public final static int VERTICAL_INTAKE_MOTOR_ID = 15;
     public final static int LEFT_INTAKE_MOTOR_ID = 16;
     public final static int RIGHT_INTAKE_MOTOR_ID = 17;
-    public final static int LEFT_DOUBLESOLENOID_FORWARD_CHANNEL = 0;
-    public final static int LEFT_DOUBLESOLENOID_REVERSE_CHANNEL = 1;
-    public final static int RIGHT_DOUBLESOLENOID_FORWARD_CHANNEL = 2; 
-    public final static int RIGHT_DOUBLESOLENOID_REVERSE_CHANNEL = 3;
+    public final static int INTAKE_PISTON_FORWARD_CHANNEL = 0;
+    public final static int INTAKE_PISTON_REVERSE_CHANNEL = 1;
+    public final static int INTAKE_BRAKE_FORWARD_CHANNEL = 2; 
+    public final static int INTAKE_BRAKE_REVERSE_CHANNEL = 3;
 }

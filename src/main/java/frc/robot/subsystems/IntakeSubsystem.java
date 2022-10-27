@@ -1,11 +1,13 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -15,10 +17,8 @@ public class IntakeSubsystem extends SubsystemBase{
     private TalonFX verticalIntakeMotor = new TalonFX(Constants.VERTICAL_INTAKE_MOTOR_ID);
     private PneumaticsModuleType leftIntakeDoubleSolenoidType = PneumaticsModuleType.REVPH;
     private PneumaticsModuleType rightIntakeDoubleSolenoidType = PneumaticsModuleType.REVPH;
-    private DoubleSolenoid leftIntakeDoubleSolenoid = new DoubleSolenoid(leftIntakeDoubleSolenoidType, 
-    Constants.LEFT_DOUBLESOLENOID_FORWARD_CHANNEL, Constants.LEFT_DOUBLESOLENOID_REVERSE_CHANNEL);
-    private DoubleSolenoid rightIntakeDoubleSolenoid = new DoubleSolenoid(rightIntakeDoubleSolenoidType, 
-    Constants.RIGHT_DOUBLESOLENOID_FORWARD_CHANNEL, Constants.RIGHT_DOUBLESOLENOID_REVERSE_CHANNEL);
+    private DoubleSolenoid IntakeDoubleSolenoid = new DoubleSolenoid(leftIntakeDoubleSolenoidType, 
+    Constants.INTAKE_PISTON_FORWARD_CHANNEL, Constants.INTAKE_PISTON_REVERSE_CHANNEL);
 
     public IntakeSubsystem() {
         leftIntakeMotor.setNeutralMode(NeutralMode.Coast);
@@ -29,7 +29,18 @@ public class IntakeSubsystem extends SubsystemBase{
         rightIntakeMotor.setInverted(false);
     }
 
+    public void runIntake() {
+        leftIntakeMotor.set(ControlMode.PercentOutput, 0.5);
+        rightIntakeMotor.set(ControlMode.PercentOutput, 0.5);
+    }
+
+    public void reverseIntake() {
+        leftIntakeMotor.set(ControlMode.PercentOutput, -0.5);
+        rightIntakeMotor.set(ControlMode.PercentOutput, -0.5);
+    }
     public void stopIntake() {
+        leftIntakeMotor.set(ControlMode.PercentOutput, 0);
+        rightIntakeMotor.set(ControlMode.PercentOutput, 0);
     }
 
     public void raiseIntake() {
@@ -38,5 +49,13 @@ public class IntakeSubsystem extends SubsystemBase{
 
     public void dropIntake() {
         verticalIntakeMotor.set(ControlMode.PercentOutput, -0.5);
+    }
+
+    public void OpenIntake() {
+        IntakeDoubleSolenoid.set(Value.kForward);
+    }
+
+    public void ClosedIntake() {
+        IntakeDoubleSolenoid.set(Value.kReverse);
     }
 }

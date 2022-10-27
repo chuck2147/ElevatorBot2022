@@ -25,13 +25,17 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Joystick controller = new Joystick(0);
+  private final XboxController controller = new XboxController(0);
   private final JoystickButton elevatorButton = new JoystickButton(controller, 1);
   private final JoystickButton elevatorBottomButton = new JoystickButton(controller, 2);
   private final JoystickButton elevatorMiddleButton = new JoystickButton(controller, 3);
   private final JoystickButton elevatorTopButton = new JoystickButton(controller, 4);
   private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  private final JoystickButton intakeForwardButton = new JoystickButton(controller, 5);
+  private final JoystickButton intakeReverseButton = new JoystickButton(controller, 6);
+  private final JoystickButton intakePistonOpenButton = new JoystickButton(controller, 7);
+  private final JoystickButton intakePistonCloseButton = new JoystickButton(controller, 8);
 
   private final ElevatorButtonCommand elevatorCommand = new ElevatorButtonCommand(elevatorSubsystem);
   private final ElevatorButtonCommand m_autoCommand = new ElevatorButtonCommand(elevatorSubsystem);
@@ -52,8 +56,18 @@ public class RobotContainer {
     elevatorButton.whileHeld(elevatorCommand);
     elevatorButton.whenReleased(elevatorSubsystem::stopMotor);//hi
     elevatorBottomButton.whenPressed(new ElevatorGoToBottomCommand(elevatorSubsystem, Constants.ELEVATOR_BOTTOM_ENCODER_VALUE));
+    elevatorBottomButton.whenReleased(elevatorSubsystem::stopMotor);
     elevatorMiddleButton.whenPressed(new ElevatorGoToMiddleCommand(elevatorSubsystem, Constants.ELEVATOR_MIDDLE_ENCODER_VALUE));
+    elevatorMiddleButton.whenReleased(elevatorSubsystem::stopMotor);
     elevatorTopButton.whenPressed(new ElevatorGoToTopCommand(elevatorSubsystem, Constants.ELEVATOR_TOP_ENCODER_VALUE));
+    elevatorTopButton.whenReleased(elevatorSubsystem::stopMotor); 
+
+    intakeForwardButton.whileHeld(intakeSubsystem::runIntake);
+    intakeForwardButton.whenReleased(intakeSubsystem::stopIntake); 
+    intakeReverseButton.whileHeld(intakeSubsystem::reverseIntake);
+    intakeReverseButton.whenReleased(intakeSubsystem::stopIntake);
+    intakePistonOpenButton.whenPressed(intakeSubsystem::OpenIntake); 
+    intakePistonCloseButton.whenPressed(intakeSubsystem::ClosedIntake);
   }
 
   /**
